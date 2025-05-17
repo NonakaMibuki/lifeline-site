@@ -86,9 +86,16 @@ if (sendMail($address, $title, $content)) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="ライフライン, 引越し, 電気, ガス, 新居, 申し込み">
+    <meta name="keywords" content="ライフライン, 引越し, 電気, ガス, 水道, インターネット, 新居, 申し込み, ライフライン手続き, 引越し手続き, インフラ, 開通手続き, 契約手続き, BPO, コールセンター, サポート, 生活インフラ, 住所変更, 光回線, 電力会社, ガス会社, ライフライン サポート" />
+    <meta
+      name="description"
+      content="ギバー株式会社は、電気・ガス・水道・インターネットなどのライフラインサービスを提供している企業です。
+    安心で快適な生活を実現するために、コールセンター業務、アライアンス事業、BPOサービスを展開しています。
+    お客様一人ひとりのニーズにしっかりと向き合い、最適なサービスをご提案。
+    引越し時のライフライン手続きも、安心してお任せいただけます。"
+    />
     <link rel="stylesheet" href="../style.css" />
-    <title>ギバー株式会社</title>
+    <title>ギバー株式会社 お問い合わせ</title>
 </head>
 
 <body>
