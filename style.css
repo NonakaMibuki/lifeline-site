@@ -556,7 +556,7 @@ header nav ul li a:hover {
         from {
             width: 0ch;
         }
-    
+
         to {
             width: 14ch;
         }
@@ -574,7 +574,7 @@ header nav ul li a:hover {
     }
 
     .fv__text p {
-      font-size: 0.8rem;
+        font-size: 0.8rem;
     }
 
     .fv__img img {
@@ -690,7 +690,7 @@ div.about__box--text p {
 @media(max-width:599px) {
 
     .about__container {
-        height:100%;
+        height: 100%;
         display: block;
     }
 
@@ -1194,7 +1194,7 @@ p.detail__text {
         padding-bottom: 50px;
     }
 
-    .lifeline-section-title  {
+    .lifeline-section-title {
         font-size: 1.2rem;
     }
 
@@ -2163,16 +2163,17 @@ h3.section-subtitle {
 
     .step {
         display: flex;
-        flex-direction: row; /* 横並び */
+        flex-direction: row;
+        /* 横並び */
         align-items: flex-start;
         justify-content: flex-start;
         margin-bottom: 5px;
         text-align: left;
         gap: 15px;
         padding: 10px;
-      }
-    
-      .step-number {
+    }
+
+    .step-number {
         flex-shrink: 0;
         width: 40px;
         height: 40px;
@@ -2180,8 +2181,8 @@ h3.section-subtitle {
         font-size: 1rem;
         margin: 0;
         text-align: center;
-      }
-    
+    }
+
 
     .step-content {
         margin: 10px 0;
@@ -2210,13 +2211,14 @@ contact
 .fv__container.contact {
     height: 25vh;
     position: relative;
+    background-color: #005C53;
 }
 
 .fv__box.contact {
     background-color: #005C53;
 }
 
-.fv__box.contact h1 a{
+.fv__box.contact h1 a {
     font-size: 1.5rem;
     color: #fff;
     font-weight: 600;
@@ -2244,18 +2246,18 @@ contact
     max-width: 800px;
     margin: 10px auto 40px;
     padding: 0 20px;
-  }
-  
-  .step-item {
+}
+
+.step-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex: 1;
     position: relative;
     text-align: center;
-  }
-  
-  .step-item:not(:last-child)::after {
+}
+
+.step-item:not(:last-child)::after {
     content: '';
     position: absolute;
     top: 25px;
@@ -2264,9 +2266,9 @@ contact
     height: 2px;
     background-color: #ccc;
     z-index: 0;
-  }
-  
-  .step-circle {
+}
+
+.step-circle {
     width: 40px;
     height: 40px;
     background-color: #ccc;
@@ -2275,22 +2277,22 @@ contact
     line-height: 40px;
     font-weight: bold;
     z-index: 1;
-  }
-  
-  .step-label {
+}
+
+.step-label {
     margin-top: 8px;
     font-size: 0.9rem;
     color: #333;
-  }
-  
-  .step-item.current .step-circle {
+}
+
+.step-item.current .step-circle {
     background-color: #00a58c;
-  }
-  
-  .step-item.current .step-label {
+}
+
+.step-item.current .step-label {
     font-weight: bold;
     color: #00a58c;
-  }
+}
 
 form {
     max-width: 60%;
@@ -2473,13 +2475,18 @@ p.form__reply.tel {
 
 @media(max-width: 1024px) {
 
-    .fv__contact--container {
-        height: 30vh;
+    .fv__container.contact {
+        height: 20vh;
     }
 
     .contact__form__container {
-        min-width: 70%;
-        margin: 100px auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 70px 0;
+    }
+
+    form {
+        max-width: 75%;
     }
 
     .form_list input {
@@ -2516,33 +2523,42 @@ p.form__reply.tel {
 
 @media(max-width:599px) {
 
-    .form-steps {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0 10px;
-      }
-    
-      .step-item {
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-    
-      .step-item::after {
-        display: none;
-      }
-    
-      .step-circle {
+    .fv__container.contact {
+        height: 18vh;
+    }
+
+    .fv__box.contact header {
+        justify-content: right;
+    }
+
+    .fv__box.contact h1 a {
+        position: fixed;
+        z-index: 1000;
+        font-size: 1.1rem;
+        top: 6px;
+        font-weight: 500;
+    }
+
+    .fv__container.contact h1 a {
+        color: #333;
+        background-color: #fff;
+    }
+
+    .fv__container.contact h2 {
+        font-size: 2.5rem;
         margin-right: 10px;
-      }
-    
-      .step-label {
-        margin-top: 0;
-      }
+
+    }
+
 
     .contact__form__container {
-        max-width: 85%;
-        margin: 80px auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 40px 0;
+    }
+
+    .step-label {
+        font-size: 0.8rem;
     }
 
     p.contact__form--text {
@@ -2552,6 +2568,10 @@ p.form__reply.tel {
 
     p.contact__form--text span {
         font-size: 0.78rem;
+    }
+
+    form {
+        max-width: 90%;
     }
 
     .form_list input {

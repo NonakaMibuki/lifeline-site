@@ -25,11 +25,11 @@ function sendMail($address, $title, $content)
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'bluefennec4.sakura.ne.jp'; 
+        $mail->Host = ''; 
         $mail->SMTPAuth = true;
-        $mail->Username = 'contact@'; 
-        $mail->Password = 'whol0211'; 
-        $mail->SMTPSecure = 'tls'; 
+        $mail->Username = ''; 
+        $mail->Password = ''; 
+        $mail->SMTPSecure = ''; 
         $mail->Port = 587; 
         $mail->setFrom('contact@', 'ギバー株式会社'); 
         $mail->addAddress($address);

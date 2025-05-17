@@ -91,7 +91,7 @@ if ($pageFlag === 0) {
     <?php if ($pageFlag === 0): ?>
 
       <p class="contact__form--text area2">フォームにお問い合わせ内容を入力してください。<br>
-        <span>※「contact@」からのメールを受信できるように設定をお願いいたします。</span>
+        <span>※「contact@」からのメールを<br class="sp-only"/>受信できるように設定をお願いいたします。</span>
       </p>
 
       <?php
@@ -187,7 +187,7 @@ if ($pageFlag === 0) {
     <!-- 確認画面 -->
     <?php if ($pageFlag === 1): ?>
 
-      <p class="contact__form--text">以下の内容にお間違いがなければ、送信ボタンを押してください。</p>
+      <p class="contact__form--text">以下の内容にお間違いがなければ、<br class="sp-only"/>送信ボタンを押してください。</p>
 
       <?php if ($_POST['csrf'] === $_SESSION['csrfToken']): ?>
 
@@ -243,7 +243,7 @@ if ($pageFlag === 0) {
         <div class="footer__tel"><a>TEL：00-0000-0000</a></div>
         <div class="footer__address">
           <p>〒102-0083</p>
-          <p>東京都千代田区麹町3丁目5番地4 麹町インテリジェントビルB-1</p>
+          <p>東京都千代田区麹町3丁目5番地4<br/>麹町インテリジェントビルB-1</p>
         </div>
       </div>
       <ul class="footer__nav">
