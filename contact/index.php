@@ -1,26 +1,38 @@
 <?php
 session_start();
 
-
-
 require '../validation.php';
+
+function hsc($str)
+{
+  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
 
 $errors = validation($_POST);
 $esc = array_map('hsc', $_POST); // ここで初期化
 
 $pageFlag = 0;
 
+// --- 戻るボタンが押されたとき ---
+if (isset($_POST['back'])) {
+  $pageFlag = 0;
+}
+
+// --- 確認ボタンが押されたとき ---
 if (isset($_POST['confirm__submit']) && empty($errors)) {
   $pageFlag = 1;
 }
 
+// --- 送信ボタンが押されたとき ---
 if (isset($_POST['form__submit'])) {
-  $pageFlag = 2;
+  header('Location: ../complete');
+  exit;
 }
 
-function hsc($str)
-{
-  return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+if ($pageFlag === 0) {
+  $currentStep = 0; // 入力画面
+} elseif ($pageFlag === 1) {
+  $currentStep = 1; // 確認画面
 }
 
 ?>
@@ -33,45 +45,45 @@ function hsc($str)
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../style.css" />
-  <title>株式会社ベース</title>
+  <title>ギバー株式会社 お問い合わせ</title>
 </head>
 
 <body>
-  <section class="fv__contact--container">
+  <section class="fv__container contact">
     <div class="fv__box contact">
+      <h1><a href="/">ギバー株式会社</a></h1>
+      <h2>Contact</h2>
       <header id="header">
-        <h1><a href="/">株式会社ベース</a></h1>
         <div class="openbtn"><span></span><span>Menu</span><span></span></div>
-        <nav class="header__nav">
+        <nav class="header__nav sub-page">
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="../#about">About us</a></li>
-            <li class="about-link">
-              <a href="#">Service</a>
-              <div class="dropDown">
-                <ul>
-                  <li class="dropDown__link"><a href="../service_callcenter">コールセンター事業</a></li>
-                  <li class="dropDown__link"><a href="../service_alliance">アライアンス事業</a></li>
-                  <li class="dropDown__link"><a href="../service_bpo">BPO事業</a></li>
-                </ul>
-              </div>
-              <div class="dropDown__sp-only">
-                <a href="../service_callcenter">コールセンター事業</a>
-                <a href="../service_alliance">アライアンス事業</a>
-                <a href="../service_bpo">BPO事業</a>
-              </div>
+            <li><a href="../#about">About</a></li>
+            <li>
+              <a href="../#service">Service</a>
             </li>
-            <li class="hamburger__contact"><a href="#">Contact</a></li>
           </ul>
+          <div class="contact__button"><a href="#">Contact</a></div>
         </nav>
-        <div class="hamburger__cover"></div>
       </header>
-    </div>
-    <div class="contact__top--text">
-      <h2>お問い合わせ</h2>
     </div>
   </section>
   <section class="contact__form__container">
+
+    <div class="form-steps">
+      <div class="step-item <?= $currentStep === 0 ? 'current' : '' ?>">
+        <div class="step-circle">1</div>
+        <div class="step-label">入力</div>
+      </div>
+      <div class="step-item <?= $currentStep === 1 ? 'current' : '' ?>">
+        <div class="step-circle">2</div>
+        <div class="step-label">確認</div>
+      </div>
+      <div class="step-item <?= $currentStep === 2 ? 'current' : '' ?>">
+        <div class="step-circle">3</div>
+        <div class="step-label">完了</div>
+      </div>
+    </div>
 
     <!-- 入力画面 -->
 
@@ -79,7 +91,7 @@ function hsc($str)
     <?php if ($pageFlag === 0): ?>
 
       <p class="contact__form--text area2">フォームにお問い合わせ内容を入力してください。<br>
-        <span>※「contact@base.ne.jp」からのメールを受信できるように設定をお願いいたします。</span>
+        <span>※「contact@」からのメールを受信できるように設定をお願いいたします。</span>
       </p>
 
       <?php
@@ -153,8 +165,11 @@ function hsc($str)
               ご本人からの求めにより、当社が保有する保有個人データに関する開示、利用目的の通知、内容の訂正・追加または削除、
               利用停止、消去、第三者提供の停止および第三者提供記録の開示(以下、開示等という)に応じます。<br />
               開示等に応ずる窓口は、下記の申し出先にご連絡下さい。</p>
-            <p class="privacy__text">〒542-0082 大阪府大阪市中央区島之内一丁目22番22号 第一住建島之内堺筋ビル503号<br />
-              株式会社ベース 個人情報取り扱い窓口<br />
+            <p class="privacy__text">〒102-0083
+              <br />
+              東京都千代田区麹町3丁目5番地4 麹町インテリジェントビルB-1
+              <br />
+              ギバー株式会社 個人情報取り扱い窓口<br />
               <a class="privacy__box--tel">06-7878-5628</a> <br class="sp-only">
               （受付時間：平日 午前11時〜午後18時まで）
             </p>
@@ -176,7 +191,7 @@ function hsc($str)
 
       <?php if ($_POST['csrf'] === $_SESSION['csrfToken']): ?>
 
-        <form method="POST" action="../complete/">
+        <form method="POST" action="">
           <div class="form_list">
             <p class="privacy__sub--title">お名前</p>
             <p class="form__reply"><?php echo hsc($_POST['name']); ?></p>
@@ -201,7 +216,7 @@ function hsc($str)
           </div>
           <div class="form__button--box">
             <div class="back__button">
-              <button type="submit">戻る</button>
+              <button type="submit" name="back">戻る</button>
             </div>
             <div class="form__submit">
               <button type="submit" name="form__submit">送信する</button>
@@ -211,11 +226,9 @@ function hsc($str)
           <input type="hidden" name="name" value="<?php echo $_POST['name']; ?>">
           <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
           <input type="hidden" name="tel" value="<?php echo $_POST['tel']; ?>">
-          <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
           <input type="hidden" name="contact" value="<?php echo hsc($_POST['contact']); ?>">
-          <input name="checkbox" type="hidden" <?php echo 'checked'; ?> />
+          <input type="hidden" name="checkbox" value="on">
           <input type="hidden" name="csrf" value="<?php echo $_SESSION['csrfToken']; ?>">
-
 
         </form>
       <?php endif; ?>
@@ -224,22 +237,20 @@ function hsc($str)
 
   </section>
   <footer>
-    <p class="js-scroll scroll-top scrollview pc-only"><a href="#about">Scroll</a></p>
-    <p class="js-pagetop scroll-top pc-only"><a href="#">Page Top</a></p>
     <div class="footer__container">
       <div>
-        <h3><a href="">株式会社ベース</a></h3>
-        <div class="footer__tel"><a>TEL：06-7878-5628</a></div>
+        <h3><a href="/">ギバー株式会社</a></h3>
+        <div class="footer__tel"><a>TEL：00-0000-0000</a></div>
         <div class="footer__address">
-          <p>〒542-0082</p>
-          <p>大阪府大阪市中央区島之内一丁目22番22号 第一住建島之内堺筋ビル503号</p>
+          <p>〒102-0083</p>
+          <p>東京都千代田区麹町3丁目5番地4 麹町インテリジェントビルB-1</p>
         </div>
       </div>
       <ul class="footer__nav">
         <li><a href="/">Home</a></li>
-        <li><a href="../#about">About us</a></li>
+        <li><a href="../#about">About</a></li>
         <li><a href="../#service">Service</a></li>
-        <li><a href="../contact">Contact</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
     </div>
   </footer>

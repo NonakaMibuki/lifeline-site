@@ -166,9 +166,9 @@ header {
     z-index: 999;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
     width: 100%;
     position: absolute;
+    padding-top: 10px;
     top: 0;
     left: 0;
     background-color: none;
@@ -185,13 +185,14 @@ header .openbtn {
     z-index: 111;
 }
 
-
-header h1 a {
+h1 a {
+    background-color: #005C53;
+    padding: 15px 25px 15px 0;
     font-size: 1.5rem;
-    color: #333;
-    font-weight: 500;
+    color: #fff;
+    font-weight: 600;
     font-family: Montserrat, sans-serif;
-
+    z-index: 999;
 }
 
 .header__nav ul {
@@ -218,10 +219,6 @@ header nav ul li a:hover {
     color: #005C53;
 }
 
-header nav ul li.about-link {
-    position: relative;
-}
-
 .contact__button {
     background-color: #005C53;
     text-align: center;
@@ -237,9 +234,10 @@ header nav ul li.about-link {
     letter-spacing: 0.1em;
     font-size: 0.9rem;
     font-weight: 500;
+    z-index: 999;
 }
 
-.contact__button:hover {
+.contact__button a:hover {
     opacity: 0.85;
 }
 
@@ -262,7 +260,7 @@ header nav ul li.about-link {
 
 .fv__text {
     position: absolute;
-    top: 32%;
+    top: 30%;
     left: 39%;
     transform: translate(-32%, -39%);
     text-align: center;
@@ -291,8 +289,7 @@ header nav ul li.about-link {
     }
 
     to {
-        width: 18ch;
-        /* 表示する文字数に合わせて調整 */
+        width: 25ch;
     }
 }
 
@@ -314,6 +311,7 @@ header nav ul li.about-link {
     width: 80%;
     left: 10%;
     bottom: -28%;
+    z-index: 0;
 }
 
 .fv__img img.fadeIn-img {
@@ -408,6 +406,7 @@ header nav ul li.about-link {
     }
 
     header h1 a {
+        background-color: #fff;
         font-size: 1.1rem;
         color: #333;
     }
@@ -551,6 +550,16 @@ header nav ul li.about-link {
 
     .catch-copy {
         font-size: 1.3rem;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0ch;
+        }
+    
+        to {
+            width: 14ch;
+        }
     }
 
     .fv__img {
@@ -2198,34 +2207,94 @@ contact
 
 =============================*/
 
-.fv__contact--container {
-    height: 50vh;
+.fv__container.contact {
+    height: 25vh;
     position: relative;
 }
 
 .fv__box.contact {
-    background: linear-gradient(to bottom right, #f3b081, #e8b48f, #ffe5b3);
+    background-color: #005C53;
 }
 
-.contact__top--text {
-    position: absolute;
-    top: 50%;
-    left: 44%;
-    text-align: center;
-}
-
-.contact__top--text h2 {
+.fv__box.contact h1 a{
+    font-size: 1.5rem;
     color: #fff;
-    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+}
+
+.fv__box.contact h2 {
+    text-align: right;
+    font-size: 7.5rem;
+    margin-right: 20px;
+    color: #fff;
+    font-style: italic;
 }
 
 .contact__form__container {
-    max-width: 60%;
-    margin: 150px auto;
+    border: 25px solid #005C53;
+    border-bottom: 50px solid #005C53;
+    padding: 120px 0;
 }
 
-form {
+.form-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 10px auto 40px;
+    padding: 0 20px;
+  }
+  
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    text-align: center;
+  }
+  
+  .step-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: -50%;
     width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    z-index: 0;
+  }
+  
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 40px;
+    font-weight: bold;
+    z-index: 1;
+  }
+  
+  .step-label {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .step-item.current .step-circle {
+    background-color: #00a58c;
+  }
+  
+  .step-item.current .step-label {
+    font-weight: bold;
+    color: #00a58c;
+  }
+
+form {
+    max-width: 60%;
+    margin: 0 auto;
 }
 
 p.contact__form--text {
@@ -2359,7 +2428,7 @@ p.form__reply.tel {
 
 
 .form__submit button, .confirm__submit button, .back__button button {
-    background-color: #f5965b;
+    background-color: #E0AA49;
     border-radius: 50px;
     color: #fff;
     width: 240px;
@@ -2371,9 +2440,9 @@ p.form__reply.tel {
 }
 
 .form__submit button:hover, .confirm__submit button:hover {
-    border: 1px #f5965b solid;
+    border: 1px #E0AA49 solid;
     background-color: #fff;
-    color: #f5965b;
+    color: #E0AA49;
 }
 
 .back__button button {
@@ -2406,14 +2475,6 @@ p.form__reply.tel {
 
     .fv__contact--container {
         height: 30vh;
-    }
-
-    .contact__top--text {
-        left: 41%;
-    }
-
-    .contact__top--text h2 {
-        font-size: 1.5rem;
     }
 
     .contact__form__container {
@@ -2455,14 +2516,29 @@ p.form__reply.tel {
 
 @media(max-width:599px) {
 
-    .contact__top--text {
-        top: 57%;
-        left: 33%;
-    }
-
-    .contact__top--text h2 {
-        font-size: 1.3rem;
-    }
+    .form-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 10px;
+      }
+    
+      .step-item {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+    
+      .step-item::after {
+        display: none;
+      }
+    
+      .step-circle {
+        margin-right: 10px;
+      }
+    
+      .step-label {
+        margin-top: 0;
+      }
 
     .contact__form__container {
         max-width: 85%;
